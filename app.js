@@ -2,6 +2,8 @@ const express = require('express');
 const app = express();
 const PORT = 3400;
 
+app.set('port', (PORT || 3400));
+
 app.use(express.static(__dirname + '/public'));
 
 app.post('/delivery', (req, res) => {
@@ -54,6 +56,6 @@ app.get('/', (req, res) => {
 	});
 });
 
-app.listen(PORT, function () {
-  console.log('Example app listening on port '+ PORT +'!');
+app.listen(app.get('port'), function () {
+  console.log('Example app listening on port '+ app.get('port') +'!');
 });
