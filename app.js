@@ -1,8 +1,53 @@
-var express = require('express');
-var app = express();
+const express = require('express');
+const app = express();
+const PORT = 3400;
 
 app.use(express.static(__dirname + '/public'));
 
-app.listen(3000, function () {
-  console.log('Example app listening on port 3000!');
+app.post('/delivery', (req, res) => {
+	
+	let t = req.query.t;
+	let error = req.query.error;
+	let pac = req.query.pac;
+	
+	t = t || 0;
+	!!pac ? parseInt(pac) : 10
+	
+	let data = {
+		"delivery_methods": [
+		  {
+			"id": "10",
+			"eta_days": 5,
+			"name": "PAC",
+			"amount": pac
+		  },
+		  {
+			"id": "10",
+			"eta_days": 2,
+			"name": "Sedex",
+			"amount": 25
+		  }
+		]
+	};
+	
+	if(error){
+		data = {
+			"errors": [
+			  {
+				"key": "Chave",
+				"message": "Mensagem de erro"
+			  }
+			]
+		};
+	}
+
+	setTimeout(() => {
+		res.json(data);
+	}, t);
+	
+	//res.json(data);
+});
+
+app.listen(PORT, function () {
+  console.log('Example app listening on port '+ PORT +'!');
 });
