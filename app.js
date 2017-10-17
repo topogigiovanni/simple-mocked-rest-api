@@ -48,6 +48,12 @@ app.post('/delivery', (req, res) => {
 	//res.json(data);
 });
 
+app.get('/', (req, res) => {
+	res.json({
+		ok: true
+	});
+});
+
 app.listen(PORT, function () {
   console.log('Example app listening on port '+ PORT +'!');
 });
