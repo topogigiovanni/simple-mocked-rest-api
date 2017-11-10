@@ -7,7 +7,7 @@ Gulp gives the livereload super quick power.
 ### To install
 
 ```bash
-git clone https://github.com/MadeOnMars/Express-boilerplate.git myApp
+git clone https://github.com/topogigiovanni/simple-mocked-rest-api myApp
 cd myApp
 npm install
 npm install --global gulp
